@@ -42,12 +42,12 @@
 			var aviso = document.getElementById("aviso");
 			aviso.innerHTML = "";
 			var nombre = document.getElementById("nombre");
-			if(nombre.value.length == 0){
+			if(nombre.value.length === 0){
 				aviso.innerHTML = "**El nombre no puede estar vacío**";
 				return false;
 			}
 			var fecha = document.getElementById("fecha");
-			if(fecha.value.length == 0){
+			if(fecha.value.length === 0){
 				aviso.innerHTML = "**Debe seleccionar una fecha**";
 				fecha.focus();
 				return false;
