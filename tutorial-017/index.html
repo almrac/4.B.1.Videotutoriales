@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Repaso JavaScript III</title>
+</head>
+<body>
+	<h1>Validación de Formuarios</h1>
+	<form action="procesa.php" method="get" onsubmit="return validateForm()">
+		<p>Nombre <input id="nombre" name="nombre" type="text" autofocus></p>
+		<p>Contraseña: <input id="password" name="password" type="password"></p>
+		<p>Edad: <input id="edad" name="edad" type="number"></p>
+		<p>Provincia: <select id="provincia" name="provincia">
+			<option value="ninguna" selected>--Elija una--</option>
+			<option value="ab">Albacete</option>
+			<option value="cr">Ciudad Real</option>
+			<option value="cu">Cuenca</option>
+			<option value="to">Toledo</option>
+		</select></p>
+		<p><input id="acepto" name="acepto" type="checkbox">
+			Acepto las condiciones</p>
+		<p><input type="submit" value="Enviar"></p>
+	</form>
+
+	<script>
+		function validateForm() {
+			let nombre = document.getElementById("nombre");
+			let password = document.getElementById("password");
+			let edad = document.getElementById("edad");
+			let provincia = document.getElementById("provincia");
+			let acepto = document.getElementById("acepto");
+			if (nombre.value == "") {
+				alert("El campo nombre no puede estar vacío");
+				nombre.focus();
+				return false;
+			}
+			if (password.value.length < 6) {
+				alert("La contraseña debe tener al menos 6 caracteres");
+				password.focus();
+				return false;
+			}
+			if (edad.value === "" || parseInt(edad.value) < 18) {
+				alert("Debes ser mayor a 18 años");
+				edad.focus();
+				return false;
+			}
+			if (provincia.value === "ninguna") {
+				alert("Debes seleccionar una provincia");
+				provincia.focus();
+				return false;
+			}
+			if (acepto.checked === false) {
+				alert("Debes aceptar las condiciones");
+				acepto.focus();
+				return false;
+			}
+			return true;
+
+		}
+	</script>
+</body>
+</html>
